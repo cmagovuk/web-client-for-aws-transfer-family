@@ -11,7 +11,7 @@ RECORDNAME="" # Record Set Name for domain : eg sftpapi.mycompanydomain.com
 cd $ROOT/deployment
 bash build-s3-dist.sh $BUCKET_NAME $SOLUTION_NAME $VERSION
 aws s3 sync regional-s3-assets/ s3://${BUCKET_NAME}/${SOLUTION_NAME}/${VERSION}/
-cd global-s3-assets/
+cd global-s3-assets/ # NOTE: This replaces dist/deployment
 
 # TODO - Megatemplate that defines the other templates in a nested stack. Will
 # also need to sync global-s3-assets for that, with all these templates below.

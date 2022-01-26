@@ -13,10 +13,6 @@ bash build-s3-dist.sh $BUCKET_NAME $SOLUTION_NAME $VERSION
 aws s3 sync regional-s3-assets/ s3://${BUCKET_NAME}/${SOLUTION_NAME}/${VERSION}/
 cd global-s3-assets/ # NOTE: This replaces dist/deployment
 
-# TODO - Megatemplate that defines the other templates in a nested stack. Will
-# also need to sync global-s3-assets for that, with all these templates below.
-# Will greatly simplify deployment assuming all prerequisites are met.
-
 aws cloudformation deploy --template-file 01-sftp-vpc.template --stack-name sftp-vpc-stack --capabilities CAPABILITY_IAM
 aws cloudformation deploy --template-file 02-sftp-cognito.template --stack-name sftp-cognito-stack --capabilities CAPABILITY_IAM
 aws cloudformation deploy --template-file 03-sftp-endpoint.template --stack-name sftp-endpoint-stack --capabilities CAPABILITY_IAM

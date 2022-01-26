@@ -17,3 +17,4 @@ aws cloudformation deploy --template-file 01-sftp-vpc.template --stack-name sftp
 aws cloudformation deploy --template-file 02-sftp-cognito.template --stack-name sftp-cognito-stack --capabilities CAPABILITY_IAM
 aws cloudformation deploy --template-file 03-sftp-endpoint.template --stack-name sftp-endpoint-stack --capabilities CAPABILITY_IAM
 aws cloudformation deploy --template-file 04-sftp-ecs.template --stack-name sftp-ecs-stack --capabilities CAPABILITY_IAM --parameter-overrides HostedZoneId=$HOSTEDZONEID RecordName=$RECORDNAME
+bash 04a-build-docker-image.sh

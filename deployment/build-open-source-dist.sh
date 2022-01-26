@@ -16,6 +16,8 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+set -e # Just in case - lots of rm -rf
+
 # Get reference for all important folders
 source_template_dir="$PWD"
 dist_dir="$source_template_dir/open-source"

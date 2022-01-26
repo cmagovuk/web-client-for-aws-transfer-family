@@ -398,22 +398,8 @@ Resources:
           ROLE_ARN:
             Fn::GetAtt: TransferSFTPS3Access.Arn
       Code:
-        S3Bucket:
-          !Join [
-            "-",
-            [
-            !FindInMap ["SourceCode", "General", "S3Bucket"],
-            Ref: "AWS::Region",
-            ],
-          ]
-        S3Key:
-          !Join [
-            "/lambda/",
-            [
-            !FindInMap ["SourceCode", "General", "KeyPrefix"],
-            "SFTPCustomAuthLambdaFunction.zip",
-            ],
-          ]
+        S3Bucket: !FindInMap ["SourceCode", "General", "S3Bucket"]
+        S3Key: !FindInMap ["SourceCode", "General", "KeyPrefix"]
 
   SFTPCustomAuthLambdaPermission:
     Type: AWS::Lambda::Permission
@@ -667,22 +653,11 @@ Resources:
             Fn::ImportValue: !Join [':', [!Ref 'VPCResourceStack', 'StackID']]
           botoConfig: '{"user_agent_extra": "AwsSolution/SO0103/%%VERSION%%"}'
       Code:
-        S3Bucket:
-          !Join [
-            "-",
-            [
-            !FindInMap ["SourceCode", "General", "S3Bucket"],
-            Ref: "AWS::Region",
-            ],
-          ]
-        S3Key:
-          !Join [
-            "/lambda/",
-            [
-            !FindInMap ["SourceCode", "General", "KeyPrefix"],
-            "TransferMiscConfigLambdaFunction.zip",
-            ],
-          ]
+        S3Bucket: !FindInMap ["SourceCode", "General", "S3Bucket"]
+        S3Key: |
+          !Sub
+          "s3://${Fn::FindInMap ["SourceCode", "General", "KeyPrefix"]}
+          /lambda/TransferMiscConfigLambdaFunction.zip"
       Handler: TransferMiscConfigLambdaFunction.lambda_handler
       Runtime: python3.7
       Timeout: 10

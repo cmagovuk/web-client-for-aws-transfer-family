@@ -1,0 +1,36 @@
+BucketName:
+  - Name: BucketName
+  - Description: Bucket Name to Deploy To.
+  - Value: ""
+SolutionName:
+  - Name: SolutionName
+  - Description: Name of your Application.
+  - Value: ""
+Version:
+  - Name: Version
+  - Description: Version of the Application
+  - Value: ""
+ProjectRoot:
+  - Name: ProjectRoot
+  - Description: Root of the project on the deployment machine.
+  - Value: ""
+CompanyDomain:
+  - Name: CompanyDomain
+  - Description: Company Domain matching the Hosted Zone from Route53: eg mycompanydomain.com
+  - Value: ""
+RecordName:
+  - Name: RecordName
+  - Description: Record Set Name for the domain: eg stfpapi.mycompanyapi.com
+  - Value: ""
+CloudfrontCNAME:
+  - Name: CloudfrontCNAME
+  - Description: CNAME entry used in the Cloudfront distribution: eg ui.mycompanydomain.com
+  - Value: ""
+ECRRepoName:
+  - Name: ECRRepoName
+  - Description: Name to use for the ECR Repository used by ECS
+  - Value: ""
+LogLevel:
+  - Name: LogLevel
+  - Description: Level of logging used by the backend.
+  - Value: "error"
